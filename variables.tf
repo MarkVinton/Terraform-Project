@@ -14,3 +14,12 @@ variable "private_subnets_cidr" {
   description = "A list of CIDR for private subnets"
   
 }
+# variable "dynamo_table_name" {
+  
+# }
+# variable "hash_key" {
+  
+# }
+# variable "hash_key_type" {
+  
+# }
