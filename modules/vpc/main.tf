@@ -39,7 +39,7 @@ resource "aws_route_table" "Public" {
 }
 resource "aws_route_table" "Private" {
   vpc_id = aws_vpc.Project_vpc.id
-  route  {
+  route {
     cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.Project_ngw.id
   }
@@ -58,9 +58,6 @@ resource "aws_route_table_association" "private" {
   route_table_id = aws_route_table.Private.id
 }
 resource "aws_eip" "Project_eip" {
-    tags = {
-      name = "Project eip"
-    }
 }
 resource "aws_nat_gateway" "Project_ngw" {
   allocation_id = aws_eip.Project_eip.id
