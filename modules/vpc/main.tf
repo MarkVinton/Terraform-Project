@@ -39,6 +39,10 @@ resource "aws_route_table" "Public" {
 }
 resource "aws_route_table" "Private" {
   vpc_id = aws_vpc.Project_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.Project_ngw.id
+  }
   tags = {
     Name = "Private Route"
   }
@@ -54,11 +58,9 @@ resource "aws_route_table_association" "private" {
   route_table_id = aws_route_table.Private.id
 }
 resource "aws_eip" "Project_eip" {
-  count = length(var.public_subnets_cidr)
 }
 resource "aws_nat_gateway" "Project_ngw" {
-  count = length(var.public_subnets_cidr)
-  allocation_id = aws_eip.Project_eip[count.index].id
-  subnet_id = aws_subnet.Project_public_subnets[count.index].id
+  allocation_id = aws_eip.Project_eip.id
+  subnet_id = aws_subnet.Project_public_subnets[0].id
   depends_on = [aws_internet_gateway.Project_igw]
 }
