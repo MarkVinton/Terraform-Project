@@ -21,3 +21,15 @@ module "dynamo_heating" {
 hash_key_name = var.hash_key_name_heating
 hash_key_type = var.hash_key_type_heating
 }
+module "Servers" {
+  source = "./modules/servers"
+  public_subnets = module.vpc.public_subnets
+  private_subnets = module.vpc.private_subnets
+  security_group_ids = module.security.security_group_ids
+}
+output "security_group_ids" {
+  value = module.security.security_group_ids
+}
+output "public_subnets" {
+  value = module.vpc.public_subnets
+}
