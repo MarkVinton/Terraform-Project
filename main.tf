@@ -5,3 +5,9 @@ module "vpc" {
   availability_zones = var.availability_zones
   private_subnets_cidr = var.private_subnets_cidr
 }
+module "security" {
+  source = "./modules/security"
+  vpc_id = module.vpc.vpc_id
+    cidr_block = var.cidr_block
+    
+}
