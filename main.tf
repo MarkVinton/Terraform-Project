@@ -27,9 +27,14 @@ module "Servers" {
   private_subnets = module.vpc.private_subnets
   security_group_ids = module.security.security_group_ids
 }
-output "security_group_ids" {
-  value = module.security.security_group_ids
-}
-output "public_subnets" {
-  value = module.vpc.public_subnets
+module "Load-balancer" {
+  source = "./modules/load-balancers"
+  public_subnets = module.vpc.public_subnets
+  private_subnets = module.vpc.private_subnets
+  vpc_id = module.vpc.vpc_id
+  Lighting_instance_id = module.Servers.Lighting_instance_id
+  Heating_instance_id = module.Servers.Heating_instance_id
+  Status_instance_id = module.Servers.Status_instance_id
+  Auth_instance_id = module.Servers.Auth_instance_id
+  security_group_ids = module.security.security_group_ids
 }
