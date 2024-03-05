@@ -11,6 +11,7 @@ resource "aws_subnet" "Project_public_subnets" {
 cidr_block = var.public_subnets_cidr[count.index]
 availability_zone = var.availability_zones[count.index]
 map_public_ip_on_launch = true
+
 tags = {
   Name = "Public Subnet ${count.index}"
 }
@@ -61,6 +62,6 @@ resource "aws_eip" "Project_eip" {
 }
 resource "aws_nat_gateway" "Project_ngw" {
   allocation_id = aws_eip.Project_eip.id
-  subnet_id = aws_subnet.Project_public_subnets[0].id
+  subnet_id = aws_subnet.Project_public_subnets[2].id
   depends_on = [aws_internet_gateway.Project_igw]
 }
