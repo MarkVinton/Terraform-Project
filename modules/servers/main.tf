@@ -21,7 +21,7 @@ resource "aws_instance" "Heating_instance" {
   }
 }
 resource "aws_instance" "Status_instance" {
-    ami = "ami-0d18e50ca22537278"
+    ami = "ami-0e42ef8215f6574d5"
   instance_type = "t2.micro"
   key_name = "key-ED25519"	
   subnet_id = var.public_subnets[2]
@@ -32,7 +32,7 @@ resource "aws_instance" "Status_instance" {
   }
 }
 resource "aws_instance" "auth_instance" {
-    ami = "ami-0d18e50ca22537278"
+    ami = "ami-085502d28061bd806"
   instance_type = "t2.micro"
   key_name = "key-ED25519"	
   subnet_id = var.private_subnets[0]
