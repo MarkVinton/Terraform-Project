@@ -38,3 +38,15 @@ module "Load_balancer" {
   public_subnets = module.vpc.public_subnets
   security_group_ids = module.security.security_group_ids
 }
+module "autoscaling" {
+  source = "./modules/autoscaling"
+  security_group_ids = module.security.security_group_ids
+  lights_target = module.Load_balancer.lights_target_group
+  desired_capacity = var.desired_capacity
+  max_size = var.max_size
+  min_size = var.min_size
+  subnet_ids = module.vpc.public_subnets
+  heating_target = module.Load_balancer.heating_target
+  status_target = module.Load_balancer.status_target
+  auth_target = module.Load_balancer.auth_target
+}
