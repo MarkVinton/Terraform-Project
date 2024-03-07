@@ -32,3 +32,12 @@ variable "hash_key_name_heating" {
 variable "hash_key_type_heating" {
   description = "Type of hash key"
 }
+variable "desired_capacity" {
+  
+}
+variable "max_size" {
+  
+}
+variable "min_size" {
+  
+}

@@ -8,3 +8,6 @@ db_table_name_lighting = "Lighting"
 hash_key_name_heating = "id"
 hash_key_type_heating = "N"
 db_table_name_heating = "Heating"
+desired_capacity = 1
+min_size = 1
+max_size = 2
