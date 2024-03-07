@@ -1,5 +1,5 @@
 resource "aws_instance" "Lighting_instance" {
-    ami = "ami-0d18e50ca22537278"
+    ami = "ami-0ca4e6c42a6f72cf3"
   instance_type = "t2.micro"
   key_name = "key-ED25519"	
   subnet_id = var.public_subnets[0]
@@ -10,7 +10,7 @@ resource "aws_instance" "Lighting_instance" {
   }
 }
 resource "aws_instance" "Heating_instance" {
-    ami = "ami-0d18e50ca22537278"
+    ami = "ami-092661c89a95fb9ad"
   instance_type = "t2.micro"
   key_name = "key-ED25519"
   subnet_id = var.public_subnets[1]
