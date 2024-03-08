@@ -25,3 +25,18 @@ variable "status_target" {
 variable "auth_target" {
   
 }
+variable "lb_target_group_arn" {
+  
+}
+variable "name" {
+  
+}
+variable "ami" {
+  
+}
+variable "key_name" {
+  
+}
+variable "instance_type" {
+  
+}

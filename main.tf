@@ -49,4 +49,9 @@ module "autoscaling" {
   heating_target = module.Load_balancer.heating_target
   status_target = module.Load_balancer.status_target
   auth_target = module.Load_balancer.auth_target
+  ami = [var.lights_ami,var.heating_ami,var.status_ami,var.auth_ami]
+  name = var.service_names
+  key_name = var.key_name
+  instance_type = var.instance_type
+  lb_target_group_arn = [module.Load_balancer.lights_target_group,module.Load_balancer.heating_target, module.Load_balancer.status_target, module.Load_balancer.auth_target]
 }
